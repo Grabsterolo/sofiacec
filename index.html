@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Sofía · Centro Europeo de Cirugía</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -291,8 +291,67 @@
 
   .restart-link button:hover { color: var(--green); }
 
-  @media (max-width: 879px) {
+  @media (min-width: 640px) and (max-width: 879px) {
     .phone { height: 580px; }
+  }
+
+  /* ── Mobile: chat ocupa toda la pantalla ── */
+  @media (max-width: 639px) {
+    body {
+      padding: 0;
+      height: 100dvh;
+      overflow: hidden;
+      align-items: stretch;
+    }
+
+    .page {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      max-width: 100%;
+    }
+
+    .intro { display: none; }
+
+    .phone-wrap {
+      flex: 1;
+      min-height: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .phone {
+      flex: 1;
+      height: 100%;
+      max-width: 100%;
+      border-radius: 0;
+      box-shadow: none;
+      border: none;
+    }
+
+    .chat-header {
+      padding-top: calc(16px + env(safe-area-inset-top, 0px));
+      padding-left: calc(18px + env(safe-area-inset-left, 0px));
+      padding-right: calc(18px + env(safe-area-inset-right, 0px));
+    }
+
+    .chat-body {
+      padding-left: calc(14px + env(safe-area-inset-left, 0px));
+      padding-right: calc(14px + env(safe-area-inset-right, 0px));
+    }
+
+    .chat-input {
+      padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+      padding-left: calc(12px + env(safe-area-inset-left, 0px));
+      padding-right: calc(12px + env(safe-area-inset-right, 0px));
+    }
+
+    /* Previene zoom automático en iOS al tocar el input */
+    .chat-input input { font-size: 16px; }
+
+    .send-btn { width: 44px; height: 44px; }
   }
 </style>
 </head>
@@ -326,13 +385,12 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
         </button>
       </div>
+      <div class="restart-link">
+        <button id="restartBtn">Reiniciar conversación</button>
+      </div>
     </div>
   </div>
 
-</div>
-
-<div class="restart-link" style="max-width: 400px; margin: 0 auto;">
-  <button id="restartBtn">Reiniciar conversación</button>
 </div>
 
 <script>
