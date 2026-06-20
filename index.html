@@ -299,31 +299,22 @@
   @media (max-width: 639px) {
     body {
       padding: 0;
-      height: 100dvh;
+      min-height: unset;
       overflow: hidden;
-      align-items: stretch;
-    }
-
-    .page {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-      max-width: 100%;
     }
 
     .intro { display: none; }
 
+    /* position:fixed inset:0 es el approach más robusto cross-browser —
+       evita que min-height:100vh y 100dvh compitan en iOS */
     .phone-wrap {
-      flex: 1;
-      min-height: 0;
+      position: fixed;
+      inset: 0;
       padding: 0;
-      display: flex;
-      flex-direction: column;
     }
 
     .phone {
-      flex: 1;
+      width: 100%;
       height: 100%;
       max-width: 100%;
       border-radius: 0;
