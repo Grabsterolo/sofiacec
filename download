@@ -1,0 +1,8 @@
+# Nunca subir variables de entorno locales con secretos
+.env
+.env.local
+.dev.vars
+
+# Sistema
+.DS_Store
+node_modules/
